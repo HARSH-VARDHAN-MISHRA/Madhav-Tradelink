@@ -1,0 +1,273 @@
+/* --- Top Black Line ---  */
+
+header .top-black-line {
+    background: var(--color-green);
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* --- Logo Middle Heading -- */
+header .header-middle .social-icons{
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+header .header-middle .social-icons a{
+    height: 2.2rem;
+    width: 2.2rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--color-green);
+    text-decoration: none;
+    color: var(--color-green);
+    transition: var(--transition-3);
+}
+header .header-middle .social-icons a:hover{
+    background: var(--color-green);
+    color: white;
+}
+
+header .header-middle .logo img{
+    height: 80px;
+}
+header .header-middle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .header-middle {
+    padding: 0.8rem 1rem;
+}
+header .contact-btn{
+    background: var(--color-green);
+    border: 1px solid white;
+    color: white;
+    padding: 0.4rem 1rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+
+
+
+/* Dropdown styles */
+header nav {
+    background: var(--bg-white-nav);
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0.5rem 1rem;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #333; /* Change the color of your links */
+    transition: color 0.3s ease; /* Smooth transition for link color change */
+    text-transform: capitalize;
+}
+
+header nav a:hover {
+    color: var(--color-green); /* Change the color on hover */
+}
+
+.main-dropdown {
+    position: relative;
+}
+.main-dropdown .dropName {
+    cursor: pointer;
+    position: relative;
+    padding-right: 1.2rem;
+}
+.main-dropdown .dropName::before {
+    position: absolute;
+    content: '\f107'; /* Font Awesome arrow icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    right: 2%;
+    top: 10%;
+    transition: transform 0.3s ease; /* Smooth transition for rotation */
+}
+.main-dropdown:hover .dropName::before {
+    transform: rotate(90deg); /* Rotate the arrow icon */
+}
+
+
+.main-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.main-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.main-dropdown .dropdown-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.main-dropdown .dropdown-content ul li a{
+    padding: 0.2rem 0.5rem;
+    min-width: 180px;
+    display: block;
+    font-size: 1rem;
+}
+
+.main-dropdown .dropdown-content ul li:hover {
+    background-color: #f0f0f0; /* Light background color on hover */
+}
+
+header nav>ul li a ,
+.main-dropdown .dropName{
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+@media only screen and (min-width: 1000px){
+    header .hamburger{
+        display: none;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    header nav{
+        display: none;
+    }
+    header .contact-btn {
+        display: none;
+    }
+    header .header-middle .social-icons {
+        display: none;
+    }
+    header .hamburger{
+        cursor: pointer;
+        display: block;
+        font-size: 1.6rem;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    header .header-middle .logo img {
+        height: 3.5rem;
+    }
+    header .hamburger {
+        font-size: 1.6rem;
+    }
+}
+
+/* -------- Side Nav ---  */
+.side-nav .mob-nav{
+    height: 100vh;
+    width: 74vw;
+    background-color: white;
+    position: fixed;
+    left: -100%;
+    top: 0%;
+    z-index: 99999;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-right: 1px solid rgb(187, 187, 187);
+
+    transition: all 0.3s linear;
+}
+
+.mob-active{
+    left: 0% !important;
+}
+
+.side-nav .mob-nav .menu-close{
+    width: 100%;
+    padding: 17px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.side-nav .mob-nav .menu-close i{
+    font-size: 30px;
+}
+
+.side-nav .mob-nav ul{
+    width: 100%;
+}
+
+.side-nav .mob-nav ul li{
+    width: 100%;
+    border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.side-nav .mob-nav ul li a{
+    display: inline-block;
+    padding: 12px 12px;
+    text-decoration: none;
+    color: var(--color-brown);
+    text-transform: capitalize;
+}
+
+.side-nav .mob-nav .info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;    
+}
+.side-nav .social-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    width: 100%;
+}
+.side-nav .social-icons a{
+    height: 2.2rem;
+    width: 2.2rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--color-green);
+    text-decoration: none;
+    color: var(--color-green);
+    transition: var(--transition-3);
+}
+.side-nav .social-icons a:hover{
+    background: var(--color-green);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
