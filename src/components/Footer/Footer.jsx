@@ -16,19 +16,19 @@ const Footer = () => {
             <div className="col-md-3">
               <h5>Quick Links</h5>
               <ul className="list-unstyled">
-                <li><Link to="">Home</Link></li>
-                <li><Link to="">About Us</Link></li>
-                <li><Link to="">Our Category</Link></li>
-                <li><Link to="">Contact Us</Link></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about-us">About Us</Link></li>
+                {/* <li><Link to="">Our Category</Link></li> */}
+                <li><Link to="/contact-us">Contact Us</Link></li>
               </ul>
             </div>
             <div className="col-md-3">
               <h5>Our Category</h5>
               <ul className="list-unstyled">
-                <li><Link to="">Doors</Link></li>
-                <li><Link to="">Modulor Kitchen</Link></li>
-                <li><Link to="">Decorative Surfaces</Link></li>
-                <li><Link to="">Wardrobes</Link></li>
+                <li><Link to="/product-page">Doors</Link></li>
+                <li><Link to="/product-page">Modulor Kitchen</Link></li>
+                <li><Link to="/product-page">Decorative Surfaces</Link></li>
+                <li><Link to="/wardrobes">Wardrobes</Link></li>
                 <li><Link to="">Laminates</Link></li>
                 <li><Link to="">Veneers</Link></li>
               </ul>
