@@ -119,13 +119,13 @@ const Header = () => {
                         <a href="#"><i className="fab fa-facebook-f"></i></a>
                         <a href="#"><i className="fab fa-twitter"></i></a>
                         <a href="#"><i className="fab fa-instagram"></i></a>
-                        <a href="#"><i className="fab fa-whatsapp"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=919953091185" target="_blank"><i className="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
 
             {/* <!-- ----------Whatsapp---------- --> */}
-            <a href="https://api.whatsapp.com/send?phone=919953091185" target="_blank" class="whatsapp_float"><i class="fa-brands fa-whatsapp whatsapp-icon"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=919953091185"  target="_blank" class="whatsapp_float"><i class="fa-brands fa-whatsapp whatsapp-icon"></i></a>
         </>
     )
 }

@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb'
 
 const Wardrobes = () => {
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }, [])
     const productImages = [
         {
             img: "https://i.ibb.co/g3mTmh9/wardrobe-1-3e10f702d01bed5a6ae6.jpg"

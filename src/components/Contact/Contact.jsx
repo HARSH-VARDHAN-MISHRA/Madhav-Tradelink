@@ -25,7 +25,7 @@ const Contact = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mt-5">
                             <div className="contact-form">
                                 <form>
                                     <div className="form-group">
