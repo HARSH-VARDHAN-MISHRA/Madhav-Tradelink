@@ -36,7 +36,7 @@ const Footer = () => {
             <div className="col-md-3">
               <h5>Contact Us</h5>
               <ul className="list-unstyled">
-                <li>Email: <a href="mailto:abc@gmail.com" target="_blank">abc@gmail.com</a></li>
+                <li>Email: <a href="mailto:vigazwood@gmail.com" target="_blank">vigazwood@gmail.com</a></li>
                 <li>Phone: 
                   <a href="tel:+919953091185">+91-9953091185</a> , <br />
                   <a href="tel:+919716628415">+91-9716628415</a>

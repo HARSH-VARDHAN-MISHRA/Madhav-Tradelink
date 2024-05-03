@@ -7,6 +7,10 @@ import Veneers from '../../components/Veneers/Veneers'
 import Contact from '../../components/Contact/Contact'
 import About from '../../components/About/About'
 import './HomePage.css'
+
+import b1 from './banner-1.jpg'
+import b2 from './banner-2.jpg'
+import b3 from './banner-3.jpg'
 const HomePage = () => {
   useEffect(() => {
     window.scrollTo({
@@ -24,13 +28,13 @@ const HomePage = () => {
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="https://img.freepik.com/free-photo/modern-kitchen-interior-white-colors_181624-58451.jpg?t=st=1714651938~exp=1714655538~hmac=6956b3bf9e01271829f0733e43bc4028aedcd1efed1a5eb7c91a059fd195dac8&w=996" class="d-block w-100" alt="..." />
+            <img src={b1} class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="https://img.freepik.com/premium-photo/modern-house-with-patio-entrance-wooden-deck-floor-3d-rendering_224530-2580.jpg?w=826" class="d-block w-100" alt="..." />
+            <img src={b2} class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="https://img.freepik.com/free-photo/modern-kitchen-interior-white-colors_181624-58451.jpg?t=st=1714651938~exp=1714655538~hmac=6956b3bf9e01271829f0733e43bc4028aedcd1efed1a5eb7c91a059fd195dac8&w=996" class="d-block w-100" alt="..." />
+            <img src={b3} class="d-block w-100" alt="..." />
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
