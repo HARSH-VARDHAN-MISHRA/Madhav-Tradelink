@@ -11,6 +11,7 @@ import './HomePage.css'
 import b1 from './banner-1.jpg'
 import b2 from './banner-2.jpg'
 import b3 from './banner-3.jpg'
+import SingleCategory from '../../components/SingleCategory/SingleCategory'
 const HomePage = () => {
   useEffect(() => {
     window.scrollTo({
@@ -49,9 +50,11 @@ const HomePage = () => {
       <About />
       <DoorCategory />
       <KitchenCateHomePage />
-      <Wardrobe />
+
+      <SingleCategory/>
+      {/* <Wardrobe />
       <Laminates />
-      <Veneers />
+      <Veneers /> */}
       <Contact />
     </>
   )

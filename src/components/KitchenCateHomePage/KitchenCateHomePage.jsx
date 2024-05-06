@@ -1,37 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './KitchenCateHomePage.css'
 import LineHead from '../LineHead/LineHead'
 import kitchenIcon from '../Assets/kitchen-icon.png'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const KitchenCateHomePage = () => {
-    const kitchenCategory = [
-        {
-            id:1,
-            categoryName:"L-Shape",
-            desc:"L-shaped kitchen design ideas for a stylish and efficient design in your home's kitchen."
-        },
-        {
-            id:2,
-            categoryName:"U-Shape",
-            desc:"The U-shaped kitchen (also called the C-shaped kitchen) is the perfect expression of the work triangle we hear so much about in kitchen design."
-        },
-        {
-            id:3,
-            categoryName:"Parallel",
-            desc:"Parallel Kitchen Designs for Your Dream Modular Kitchen.Get a more spacious and modern kitchen which match up to the latest Décor."
-        },
-        {
-            id:4,
-            categoryName:"Straight Kitchen",
-            desc:"Selected flush doors are first calibrated according to the client's ..."
-        },
-        {
-            id:5,
-            categoryName:"Island Kitchen",
-            desc:"Expressing the warmth of Indian homes our wide range of classic ..."
-        },
-    ]
+    const [kitchenCategory,setkitchenCategory] = useState([]);
+    const handleFetch = async()=>{
+        try {
+            const res = await axios.get('http://localhost:6519/api/v1/get-all-subcategory')
+            console.log(res.data.data)
+
+            const filterKitchenCate = res.data.data.filter((item)=> item.categoryName === "Modular Kitchen");
+            console.log(filterKitchenCate)
+            setkitchenCategory(filterKitchenCate)
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+    useEffect(()=>{
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+        handleFetch()
+    },[])
   return (
     <>
         <section className=' kitchenCate'>
@@ -41,10 +36,10 @@ const KitchenCateHomePage = () => {
                     {kitchenCategory && kitchenCategory.map((item,index)=>(
                         <Link className="single-kitch" key={index}>
                             <div className="head">
-                                <h4>{item.categoryName}</h4>
+                                <h4>{item.subCategoryName}</h4>
                                 <img src={kitchenIcon} alt="kitchen-icon" />
                             </div>
-                            <p className='desc'>{item.desc}</p>
+                            <p className='desc'>{item.subCategoryDesc}</p>
                         </Link>
                     ))}
                 </div>

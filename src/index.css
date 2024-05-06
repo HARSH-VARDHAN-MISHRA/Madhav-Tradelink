@@ -274,3 +274,7 @@ a {
   }
 }
 
+.singleCate-flex .wardrobe:nth-child(even) .col-md-8{
+  order: 1;
+}
+
