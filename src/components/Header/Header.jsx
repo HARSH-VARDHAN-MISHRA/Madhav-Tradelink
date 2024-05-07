@@ -34,7 +34,7 @@ const Header = () => {
     const [singleCategory, setSingleCategory] = useState([]);
     const handleFetch = async () => {
         try {
-            const res = await axios.get('http://localhost:6519/api/v1/get-all-product');
+            const res = await axios.get('https://vigaz-backend.onrender.com/api/v1/get-all-product');
             console.log(res.data.data);
             setAllCate(res.data.data);
 
