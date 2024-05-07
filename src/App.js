@@ -11,6 +11,12 @@ import { useEffect, useState } from 'react';
 import AdminHeader from './admin/Header/Header';
 import Login from './admin/auth/Login';
 import Dashboard from './admin/Dashboard/Dashboard';
+import SubCategoryPage from './Pages/SubCategoryPage/SubCategoryPage';
+import HeaderProduct from './Pages/ProductPage/HeaderProduct';
+import SubCategoryProductPage from './Pages/SubCategoryProductPage/SubCategoryProductPage';
+import InnerSubCategoryProductPage from './Pages/InnerSubCategoryProductPage/InnerSubCategoryProductPage';
+import AgainSubCategoryProductPage from './Pages/AgainSubCategoryProductPage/AgainSubCategoryProductPage';
+import OurCategoryPage from './Pages/OurCategoryPage/OurCategoryPage';
 
 function App() {
   const getAdminStatus = sessionStorage.getItem('admin') || false
@@ -39,12 +45,20 @@ function App() {
             <Route path='/contact-us' element={<ContactPage />} />
             <Route path='/product-page' element={<ProductPage />} />
             <Route path='/wardrobes' element={<Wardrobes />} />
+            <Route path='/our-category' element={<OurCategoryPage />} />
             <Route path='/admin' element={<Login />} />
 
-            <Route path='/Category/:name' element={<ProductPage />} />
-            <Route path='/Category/subcategory/:name' />
-            <Route path='/Category/subcategory/inner/:name' />
+            {/* --- This is only for to show the category and there subcategory on page ---  */}
+            {/* <Route path='/category/:categoryname/:subcatename' element={<SubCategoryPage/>} /> */}
 
+            {/* -- These 3 Routes are for the [product page] with thrise conditions --  */}
+            <Route path='/product/:category/:subcategory' element={<SubCategoryProductPage />} />
+            <Route path='/product/:category/:subcategory/:innerSubCategory' element={<InnerSubCategoryProductPage />} />
+            <Route path='/Category/:name' element={<ProductPage />} />
+            <Route path='/AgainSub/:category/:subcategory' element={<AgainSubCategoryProductPage />} />
+
+            <Route path='/product-page/:name' element={<HeaderProduct />} />
+            {/* <Route path='/category/:subcate/:name' element={<ProductPage />} /> */}
           </Routes>
           <Footer />
         </>

@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react'
 import DoorCategory from '../../components/DoorCategory/DoorCategory'
 import KitchenCateHomePage from '../../components/KitchenCateHomePage/KitchenCateHomePage'
-import Wardrobe from '../../components/Wardrobe/Wardrobe'
-import Laminates from '../../components/Laminates/Laminates'
-import Veneers from '../../components/Veneers/Veneers'
 import Contact from '../../components/Contact/Contact'
 import About from '../../components/About/About'
 import './HomePage.css'
@@ -12,6 +9,7 @@ import b1 from './banner-1.jpg'
 import b2 from './banner-2.jpg'
 import b3 from './banner-3.jpg'
 import SingleCategory from '../../components/SingleCategory/SingleCategory'
+import SubCategoryPage from '../SubCategoryPage/SubCategoryPage'
 const HomePage = () => {
   useEffect(() => {
     window.scrollTo({
@@ -48,13 +46,11 @@ const HomePage = () => {
         </button>
       </div>
       <About />
-      <DoorCategory />
-      <KitchenCateHomePage />
+      <SubCategoryPage/>
+      {/* <DoorCategory />
+      <KitchenCateHomePage /> */}
 
       <SingleCategory/>
-      {/* <Wardrobe />
-      <Laminates />
-      <Veneers /> */}
       <Contact />
     </>
   )

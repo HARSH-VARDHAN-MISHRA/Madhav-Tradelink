@@ -14,7 +14,7 @@ const AboutusPage = () => {
         <Breadcrumb title="About Us" middle={{ url: '', text: '' }} last='About Us' />
         <About/>
 
-        <section className="wardrobe">
+        <section className="wardrobe about-us-p">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">

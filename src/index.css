@@ -274,7 +274,27 @@ a {
   }
 }
 
+.about-us-p strong{
+  font-weight: 500;
+  color: var(--color-green);
+}
+
+.about-us-p ul{
+  padding-left: 2rem !important;
+  list-style-type: disc;
+}
 .singleCate-flex .wardrobe:nth-child(even) .col-md-8{
   order: 1;
 }
 
+/* ------- col-3 imag-grid ---  */
+.col-3.imag-grid img{
+  height: 300px;
+  object-fit: cover;
+}
+@media only screen and (max-width: 500px){
+  .col-3.imag-grid img{
+    height: 150px;
+    object-fit: cover;
+  }
+}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const About = () => {
   return (
     <>
-        <section className="wardrobe">
+        <section className="wardrobe about-us-p">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">

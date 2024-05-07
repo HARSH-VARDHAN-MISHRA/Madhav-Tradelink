@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import './ProductPage.css'
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 
-const ProductPage = () => {
+const SubCategoryProductPage = () => {
   
-  const {name} = useParams();
-  console.log(name);
+  const {category,subcategory} = useParams();
+  console.log(category,subcategory);
 
   const [product,setProduct] = useState([]);
 
   const handleEffect = async ()  =>{
     try {
       const res = await axios.get("http://localhost:6519/api/v1/get-all-product");
-      console.log(res.data.data);
-      const filterProduct = res.data.data.filter((item)=>item.productName === name);
-      // console.log(filterProduct)
-
+      // console.log(res.data.data);
+      const filterProduct = res.data.data.filter((item)=>item.categoryName === category && item.subCategoryName === subcategory && !item.AgainSubCategoryName);
+      console.log(filterProduct)
       setProduct(filterProduct);
     } catch (error) {
       console.log(error);
@@ -33,13 +31,13 @@ const ProductPage = () => {
     })
     handleEffect();
 
-  }, [name])
+  }, [subcategory])
 
   return (
     <>    
     {product && product.map((item,index)=>(
       <div key={index}>
-        <Breadcrumb title={item.categoryName} middle={{url:'',text:''}}  last={item.productName} />
+        <Breadcrumb title={item.categoryName} middle={{url:`/product/${item.categoryName}/${item.subCategoryName}`,text:`${item.categoryName}`}}  last={item.productName} />
         <section className="product-page">
           <div className="container py-0 pb-4">
 
@@ -83,4 +81,4 @@ const ProductPage = () => {
   )
 }
 
-export default ProductPage
+export default SubCategoryProductPage

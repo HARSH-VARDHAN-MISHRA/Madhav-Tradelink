@@ -132,6 +132,7 @@ header nav a:hover {
     min-width: 180px;
     display: block;
     font-size: 1rem;
+    text-transform: capitalize;
 }
 
 .main-dropdown .dropdown-content ul li:hover {
@@ -255,8 +256,21 @@ header nav>ul li a ,
 }
 
 
-
-
+.side-nav .main-dropdown .dropName{
+    display: block;
+    padding: 12px 12px;
+    text-decoration: none;
+    color: var(--color-brown);
+    text-transform: capitalize;
+}
+.side-nav .main-dropdown .dropName::before {
+    right: 5%;
+    top: 30%;
+}
+.side-nav .main-dropdown .dropdown-content {
+    left: 0%;
+    right: 0%;
+}
 
 
 

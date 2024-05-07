@@ -34,7 +34,7 @@ const SingleCategory = () => {
     <div className="singleCate-flex">
 
         {singleCategory && singleCategory.map((item,index)=>(
-            <section className="wardrobe">
+            <section className="wardrobe" key={index}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8">
@@ -45,11 +45,11 @@ const SingleCategory = () => {
                             ))}
                             
                             <div className="row">
-                                {item.productImage && item.productImage.map((imga,ind)=>(
-                                    <div className="col-3 imag-grid">
-                                        <img src={item.imga} alt={item.productName} key={ind} width="100%"/>
-                                    </div>
-                                ))}
+                            {item.productImage && item.productImage.slice(0, 4).map((image, index) => (
+                                <div className="col-3 imag-grid" key={index}>
+                                    <img src={image} alt={item.productName} width="100%" />
+                                </div>
+                            ))}
                             </div>
 
                             <Link to={`/Category/${item.productName}`} className="learn-more button1">

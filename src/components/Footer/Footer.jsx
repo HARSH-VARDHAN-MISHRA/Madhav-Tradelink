@@ -9,20 +9,22 @@ const Footer = () => {
       <footer className="">
         <div className="container py-4 pb-0">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-md-4">
               <Link to="/"><img src={logo} alt="logo" className='mb-2' /></Link>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Elevating Spaces with Exceptional Craftsmanship – Your Trusted Partner Since 1976 for Premium Wooden Doors, Modular Kitchens, Wardrobes, and Beyond</p>
             </div>
+            <div className="col-md-2"></div>
             <div className="col-md-3">
               <h5>Quick Links</h5>
               <ul className="list-unstyled">
                 <li><Link to="/">Home</Link></li>
+                <li><Link to="/our-category">Our Category</Link></li>
                 <li><Link to="/about-us">About Us</Link></li>
-                {/* <li><Link to="">Our Category</Link></li> */}
                 <li><Link to="/contact-us">Contact Us</Link></li>
               </ul>
             </div>
-            <div className="col-md-3">
+            
+            {/* <div className="col-md-3">
               <h5>Our Category</h5>
               <ul className="list-unstyled">
                 <li><Link to="/product-page">Doors</Link></li>
@@ -32,7 +34,7 @@ const Footer = () => {
                 <li><Link to="">Laminates</Link></li>
                 <li><Link to="">Veneers</Link></li>
               </ul>
-            </div>
+            </div> */}
             <div className="col-md-3">
               <h5>Contact Us</h5>
               <ul className="list-unstyled">
