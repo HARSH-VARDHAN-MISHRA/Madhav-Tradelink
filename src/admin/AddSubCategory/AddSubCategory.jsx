@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState,useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -58,7 +59,7 @@ const AddSubCategory = () => {
             <div>
                 <h2>Add Sub Category</h2>
                 <ul>
-                    <li><a href="/">Home / </a></li>
+                    <li><Link to="/admin/dashboard">Home / </Link></li>
                     <li><a href="/all-sub-category">Our Sub Category / </a></li>
                     <li>Create Sub category</li>
                 </ul>

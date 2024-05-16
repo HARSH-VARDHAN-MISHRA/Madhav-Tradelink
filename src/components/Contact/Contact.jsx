@@ -1,10 +1,28 @@
 import React from 'react'
 import LineHead from '../LineHead/LineHead'
 import './Contact.css'
+import emailjs from '@emailjs/browser'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
+
+    function sendEmail(e) {
+        e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
+    
+        emailjs.sendForm('service_fpov9gw', 'template_xc2bkvg', e.target, 'XUVn19ukgXJ6JwkkR')
+          .then((result) => {
+              toast.success("Send Successfully !!");
+              window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
+              e.target.value = '';
+          }, (error) => {
+              console.log(error.text);
+          });
+    }
+
     return (
         <>
+        <ToastContainer/>
             <section id="contact" className="bg-light">
                 <div className="container">
                     <div className="row">
@@ -27,15 +45,15 @@ const Contact = () => {
                         </div>
                         <div className="col-md-6 mt-5">
                             <div className="contact-form">
-                                <form>
+                                <form onSubmit={sendEmail}>
                                     <div className="form-group">
-                                        <input type="text"  id="name" placeholder="Your Name" required />
+                                        <input type="text" name="from_name"  id="Name" placeholder="Your Name" required />
                                     </div>
                                     <div className="form-group">
-                                        <input type="email"  id="email" placeholder="Your Email" required />
+                                        <input type="email" name="email_from" id="email_from" placeholder="Your Email" required />
                                     </div>
                                     <div className="form-group">
-                                        <textarea  id="message" rows="5" placeholder="Your Message" required></textarea>
+                                        <textarea  id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
                                     </div>
                                     <button type="submit" className="btn btn-primary">Send Message</button>
                                 </form>

@@ -10,6 +10,7 @@ import b2 from './banner-2.jpg'
 import b3 from './banner-3.jpg'
 import SingleCategory from '../../components/SingleCategory/SingleCategory'
 import SubCategoryPage from '../SubCategoryPage/SubCategoryPage'
+import HelmentContext from '../../components/HelmentContext/HelmentContext'
 const HomePage = () => {
   useEffect(() => {
     window.scrollTo({
@@ -19,6 +20,11 @@ const HomePage = () => {
   }, [])
   return (
     <>
+      <HelmentContext
+          title="Vigaz - Madhav Tradelink"
+          description="Welcome to Madhav Tradelink. We are a reputed manufacturer of high-quality wooden products including doors, modular kitchens, wardrobes, laminates, and veneers."
+          keywords="home,Vigaz, Madhav Tradelink, wooden products, doors, modular kitchen, wardrobes, laminates, veneers"
+      />
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

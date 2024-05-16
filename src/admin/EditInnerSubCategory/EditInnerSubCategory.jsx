@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -87,7 +87,7 @@ const EditInnerSubCategory = () => {
             <div>
                 <h2>Edit Sub Category</h2>
                 <ul>
-                    <li><a href="/">Home / </a></li>
+                    <li><Link to="/admin/dashboard">Home / </Link></li>
                     <li><a href="/all-inner-sub-category">Inner Sub-Category / </a></li>
                     <li>Edit Sub Category</li>
                 </ul>

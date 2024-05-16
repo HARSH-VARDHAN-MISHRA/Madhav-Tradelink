@@ -48,7 +48,7 @@ const AdminInnerSubCatePage = () => {
             <div>
                 <h2> Our Inner Sub Category</h2>
                 <ul>
-                    <li><a href="/">Home / </a></li>
+                    <li><Link to="/admin/dashboard">Home / </Link></li>
                     <li>Our Inner Sub Categories</li>
                 </ul>
             </div>

@@ -76,6 +76,7 @@ body.dark {
   cursor: pointer;
   font-size: 20px;
   color: var(--grey-color);
+  display: none;
 }
 /* sidebar */
 .sidebar {
@@ -383,3 +384,13 @@ body.dark {
     width: max-content;
     font-weight: 500;
   }
+@media screen and (max-width: 768px){
+  .breadCmb {
+    padding: 1rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    background: white;
+}
+}

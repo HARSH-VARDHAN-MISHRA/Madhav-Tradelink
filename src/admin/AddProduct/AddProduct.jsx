@@ -122,7 +122,7 @@ const AddProduct = () => {
         <div>
           <h2>Add Products</h2>
           <ul>
-            <li><Link to="/">Home / </Link></li>
+            <li><Link to="/admin/dashboard">Home / </Link></li>
             <li><Link to="/all-products">Our Products / </Link></li>
             <li>Create Product</li>
           </ul>

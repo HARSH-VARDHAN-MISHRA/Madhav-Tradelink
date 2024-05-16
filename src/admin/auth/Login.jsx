@@ -16,7 +16,7 @@ const Login = () => {
                 alert("Login Success");
                 setIsAdmin(true);
                 sessionStorage.setItem('admin', true); // Storing login status
-                window.location.href = "/";
+                window.location.href = "/admin/dashboard";
             }
         } catch (error) {
             console.log(error);

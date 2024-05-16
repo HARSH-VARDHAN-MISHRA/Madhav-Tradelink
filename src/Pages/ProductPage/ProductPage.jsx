@@ -3,6 +3,7 @@ import './ProductPage.css'
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import HelmentContext from '../../components/HelmentContext/HelmentContext'
 
 
 const ProductPage = () => {
@@ -39,6 +40,11 @@ const ProductPage = () => {
     <>    
     {product && product.map((item,index)=>(
       <div key={index}>
+        <HelmentContext 
+            title={`${item.productName} - Madhav Tradelink`}
+            description={`Discover the features of ${item.productName}. ${item.productDesc.join(' ')}`}
+            keywords={`${item.productName}, ${item.categoryName}, Madhav Tradelink, wooden products`}
+          />
         <Breadcrumb title={item.categoryName} middle={{url:'',text:''}}  last={item.productName} />
         <section className="product-page">
           <div className="container py-0 pb-4">

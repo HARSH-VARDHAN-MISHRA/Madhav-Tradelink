@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb'
 import About from '../../components/About/About'
+import HelmentContext from '../../components/HelmentContext/HelmentContext'
 
 const AboutusPage = () => {
     useEffect(() => {
@@ -11,6 +12,11 @@ const AboutusPage = () => {
     }, [])
   return (
     <>
+    <HelmentContext
+                title="About Us - Madhav Tradelink"
+                description="Learn more about Madhav Tradelink, a reputed manufacturer of high-quality wooden products established in 1976. We specialize in wooden doors, modular kitchens, wardrobes, laminates, and veneers."
+                keywords="about us, Madhav Tradelink, wooden products, doors, modular kitchen, wardrobes, laminates, veneers, history, company information"
+            />
         <Breadcrumb title="About Us" middle={{ url: '', text: '' }} last='About Us' />
         <About/>
 

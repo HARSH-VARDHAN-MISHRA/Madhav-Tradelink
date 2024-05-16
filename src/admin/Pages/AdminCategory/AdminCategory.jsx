@@ -38,7 +38,7 @@ const AdminCategory = () => {
                 <div>
                     <h2>Our Category</h2>
                     <ul>
-                        <li><a href="/">Home / </a></li>
+                        <li><Link to="/admin/dashboard">Home / </Link></li>
                         <li>Our Categories</li>
                     </ul>
                 </div>

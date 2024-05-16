@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,12 +21,11 @@ const EditProduct = () => {
       heading: '',
       points: [],
     },
-    // productImage: Array.from({ length: 4 }, () => ''),
     productImages: [],
 
   })
 
-  const handleChange = (event, index) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData(prevData => ({
       ...prevData,
@@ -37,32 +36,23 @@ const EditProduct = () => {
   const handleFetch = async () => {
     try {
       const res = await axios.get('https://vigaz-backend.onrender.com/api/v1/get-all-product');
-      console.log(res.data.data)
-      const product = res.data.data
-      const fillterProduct = product.filter((item) => item._id === id)
-      console.log(fillterProduct)
-
-      setFillter(fillterProduct)
+      const product = res.data.data;
+      const fillterProduct = product.filter((item) => item._id === id);
+      setFillter(fillterProduct);
+      
+      const productData = fillterProduct[0];
       setFormData({
-        categoryName: fillterProduct[0].categoryName,
-        subCategoryName: fillterProduct[0].subCategoryName,
-        AgainSubCategoryName: fillterProduct[0].AgainSubCategoryName,
-        productName: fillterProduct[0].productName,
-        prodCategory: fillterProduct[0].prodCategory,
-        prodImage: fillterProduct[0].prodImage,
-        productName: fillterProduct[0].productName,
+        categoryName: productData.categoryName,
+        subCategoryName: productData.subCategoryName,
+        AgainSubCategoryName: productData.AgainSubCategoryName,
+        productName: productData.productName,
+        productDescriptions: productData.productDesc || [],
         productPoints: {
-          heading: fillterProduct[0].productPoints ? fillterProduct[0].productPoints.heading : '',
-          points: fillterProduct[0].productPoints ? fillterProduct[0].productPoints.points : [],
+          heading: productData.productPoints ? productData.productPoints.heading : '',
+          points: productData.productPoints ? productData.productPoints.points : [],
         },
-
-      })
-      const productImage = Array.isArray(fillterProduct[0].productImage) ? fillterProduct[0].productImage : [];
-      setFormData(prevData => ({
-        ...prevData,
-        productImage: productImage,
-      }));
-
+        productImages: Array.isArray(productData.productImage) ? productData.productImage : [],
+      });
     } catch (error) {
       console.error(error)
     }
@@ -71,10 +61,10 @@ const EditProduct = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log("Formdata", formData)
-      const submitResponse = await axios.post(`https://vigaz-backend.onrender.com/api/v1/update-product/${id}`, formData);
-      console.log(submitResponse)
+      // console.log(formData)
+      const submitResponse = await axios.post(`http://localhost:6519/api/v1/update-product/${id}`, formData);
       toast.success("Product Updated Successfully")
+      console.log(submitResponse)
       window.location.href = '/all-products'
     } catch (error) {
       toast.error(error.response.data.msg)
@@ -93,8 +83,33 @@ const EditProduct = () => {
       },
     });
   };
+
+  const handleDescriptionChange = (index, value) => {
+    const updatedDescriptions = [...formData.productDescriptions];
+    updatedDescriptions[index] = value;
+    setFormData({
+      ...formData,
+      productDescriptions: updatedDescriptions,
+    });
+  };
+
+  const handleAddDescription = () => {
+    setFormData({
+      ...formData,
+      productDescriptions: [...formData.productDescriptions, '']
+    });
+  };
+
+  const handleRemoveDescription = (index) => {
+    const updatedDescriptions = [...formData.productDescriptions];
+    updatedDescriptions.splice(index, 1);
+    setFormData({
+      ...formData,
+      productDescriptions: updatedDescriptions,
+    });
+  };
+
   useEffect(() => {
-    // Fetch categories, subcategories, and inner subcategories
     const fetchData = async () => {
       try {
         const [categoriesRes, subCategoriesRes, innerSubCategoriesRes] = await Promise.all([
@@ -114,44 +129,23 @@ const EditProduct = () => {
     handleFetch();
   }, []);
 
-  // --- 
   const points = formData.productPoints.points;
   const handleImageChange = (index, event) => {
-    const newImages = [...formData.productImage]; // Change productImages to productImage
+    const newImages = [...formData.productImages];
     newImages[index] = event.target.value;
     setFormData({
       ...formData,
-      productImage: newImages
+      productImages: newImages
     });
   };
 
   const handleAddInput = () => {
     setFormData({
       ...formData,
-      productImage: [...formData.productImage, ''] // Change productImages to productImage
+      productImages: [...formData.productImages, '']
     });
   };
 
-  const [newDescription, setNewDescription] = useState('');
-
-  const handleDescriptionChange = (index, event) => {
-    const updatedDescriptions = [...formData.productDescriptions];
-    updatedDescriptions[index] = event.target.value;
-    setFormData(prevData => ({
-      ...prevData,
-      productDescriptions: updatedDescriptions,
-    }));
-  };
-  const handleAddDescription = () => {
-    if (newDescription.trim() !== '') {
-      setFormData(prevData => ({
-        ...prevData,
-        productDescriptions: [...prevData.productDescriptions, newDescription.trim()],
-      }));
-      setNewDescription(''); // Clear the new description input field after adding
-    }
-  };
-  
   return (
     <>
       <ToastContainer />
@@ -159,13 +153,10 @@ const EditProduct = () => {
         <div>
           <h2>Edit Products</h2>
           <ul>
-            <li><a href="/">Home / </a></li>
+            <li><Link to="/admin/dashboard">Home / </Link></li>
             <li><a href="/all-products">Our Products / </a></li>
             <li>Edit Product</li>
           </ul>
-        </div>
-        <div className="btn1">
-
         </div>
       </section>
 
@@ -182,7 +173,6 @@ const EditProduct = () => {
                 ))}
               </select>
             </div>
-
 
             <div className="col-md-4">
               <label htmlFor="subCategoryName" className="form-label">Select Sub Category</label>
@@ -208,41 +198,30 @@ const EditProduct = () => {
               <label htmlFor="productName" className="form-label">Product Name</label>
               <input type="text" className="form-control" value={formData.productName} name='productName' onChange={handleChange} id='productName' placeholder="Product Name" aria-label="Product Name" />
             </div>
-            
-            <div>
-              {/* Existing descriptions */}
-              {formData.productDescriptions && formData.productDescriptions.map((description, index) => (
-                <div key={index} className="mb-2">
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={description}
-                    onChange={(event) => handleDescriptionChange(index, event)}
-                    placeholder={`Description ${index + 1}`}
-                    aria-label={`Product Description ${index + 1}`}
-                  />
+
+            {/* Description */}
+            <div className="col-md-12">
+              <label htmlFor="productDescriptions" className="form-label">Product Descriptions</label>
+              {formData.productDescriptions.map((description, index) => (
+                <div key={index} className="row mb-2">
+                  <div className="col-md-10">
+                    <textarea
+                      className="form-control"
+                      value={description}
+                      onChange={(e) => handleDescriptionChange(index, e.target.value)}
+                      placeholder={`Description ${index + 1}`}
+                      aria-label={`Product Description ${index + 1}`}
+                    />
+                  </div>
+                  <div className="col-md-2">
+                    <button type="button" className="btn btn-danger" onClick={() => handleRemoveDescription(index)}>Remove</button>
+                  </div>
                 </div>
               ))}
-
-              {/* New description input */}
-              <div className="mb-2">
-                <input
-                  type="text"
-                  className="form-control"
-                  value={newDescription}
-                  onChange={(event) => setNewDescription(event.target.value)}
-                  placeholder="New Description"
-                  aria-label="New Product Description"
-                />
-              </div>
-              
-
-              {/* Add Description button */}
-              <button type="button" onClick={handleAddDescription}>Add Description</button>
+              <button type="button" className="btn btn-primary mb-2" onClick={handleAddDescription}>Add Description</button>
             </div>
 
-
-            {/* --- Points Heading ---  */}
+            {/* Points Heading */}
             <div className="col-md-12">
               <label htmlFor="productPointsHeading" className="form-label">Product Points Heading</label>
               <input
@@ -263,7 +242,7 @@ const EditProduct = () => {
               />
             </div>
 
-            {/* Points Point -- */}
+            {/* Points */}
             <div className="col-md-12">
               <label htmlFor="productPoints" className="form-label">Product Points</label>
               {points.map((point, index) => (
@@ -278,16 +257,15 @@ const EditProduct = () => {
                       aria-label={`Product Point ${index + 1}`}
                     />
                   </div>
-
                 </div>
               ))}
             </div>
+
+            {/* Images */}
             <div className="col-md-12">
               <label htmlFor="productImages" className="form-label">Product Images</label>
-
               <div className="row">
-                {/* Render existing images if formData.productImage is defined */}
-                {Array.isArray(formData.productImage) && formData.productImage.map((image, index) => (
+                {formData.productImages.map((image, index) => (
                   <div key={index} className="col-md-4 mb-2">
                     <input
                       type="text"
@@ -299,36 +277,13 @@ const EditProduct = () => {
                     />
                   </div>
                 ))}
-
-                {/* Render new image input fields */}
-                {Array.from({ length: formData.newImageCount }, (_, newIndex) => (
-                  <div key={formData.productImage.length + newIndex} className="col-md-4 mb-2">
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={formData.newImages?.[newIndex] || ''}
-                      onChange={(event) => handleNewImageChange(newIndex, event)}
-                      placeholder={`New Image URL ${formData.productImage.length + newIndex + 1}`}
-                      aria-label={`New Product Image ${formData.productImage.length + newIndex + 1}`}
-                    />
-                  </div>
-                ))}
               </div>
-
-              <div className="row">
-                {/* Add Image button */}
-                <div className="col-md-4 mb-2">
-                  <button type="button" className="btn btn-primary" onClick={handleAddInput}>
-                    Add Image
-                  </button>
-                </div>
-              </div>
+              <button type="button" className="btn btn-primary" onClick={handleAddInput}>Add Image</button>
             </div>
-
 
             <div className="col-md-12 text-center">
               <input type="reset" className='btn btn-warning text-white' /> &nbsp;
-              <input type="submit" className='btn btn-success' value="Add Product" />
+              <input type="submit" className='btn btn-success' value="Update Product" />
             </div>
 
           </form>

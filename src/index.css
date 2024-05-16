@@ -73,7 +73,7 @@ a {
 }
 
 /* Button 1  */
-.button1 {
+.button1 { 
   position: relative;
   display: inline-block;
   cursor: pointer;

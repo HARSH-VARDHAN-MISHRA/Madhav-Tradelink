@@ -38,7 +38,7 @@ const AdminProductPage = () => {
                 <div>
                     <h2>Our Products</h2>
                     <ul>
-                        <li><a href="/">Home / </a></li>
+                        <li><Link to="/admin/dashboard">Home / </Link></li>
                         <li>Our Products</li>
                     </ul>
                 </div>

@@ -48,7 +48,7 @@ const SubCategoryPage = () => {
             <div>
                 <h2>Our Sub Category</h2>
                 <ul>
-                    <li><a href="/">Home / </a></li>
+                    <li><Link to="/admin/dashboard">Home / </Link></li>
                     <li>Our Sub Categories</li>
                 </ul>
             </div>
